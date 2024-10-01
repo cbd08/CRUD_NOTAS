@@ -1,0 +1,15 @@
+D:\Tawa\CRUD_NOTAS\Data Access\bin\Debug\net6.0\Data Access.deps.json
+D:\Tawa\CRUD_NOTAS\Data Access\bin\Debug\net6.0\Data Access.dll
+D:\Tawa\CRUD_NOTAS\Data Access\bin\Debug\net6.0\Data Access.pdb
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\Data Access.csproj.AssemblyReference.cache
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\Data Access.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\Data Access.AssemblyInfoInputs.cache
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\Data Access.AssemblyInfo.cs
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\Data Access.csproj.CoreCompileInputs.cache
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\Data Access.dll
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\refint\Data Access.dll
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\Data Access.pdb
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\ref\Data Access.dll
+D:\Tawa\CRUD_NOTAS\Data Access\bin\Debug\net6.0\Business Entity.dll
+D:\Tawa\CRUD_NOTAS\Data Access\bin\Debug\net6.0\Business Entity.pdb
+D:\Tawa\CRUD_NOTAS\Data Access\obj\Debug\net6.0\Data Access.csproj.CopyComplete

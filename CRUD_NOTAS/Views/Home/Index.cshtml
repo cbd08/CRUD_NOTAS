@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Crud de Notas</h1>
+</div>
+<div class="text-center mt-3">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Registrar
+    </button>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear nuevo registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="createForm">
+                <div class="modal-body">
+                    <!-- Input para Name -->
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="nameInput" name="Name" required minlength="3" maxlength="50" />
+                        <div class="invalid-feedback">El nombre debe tener entre 3 y 100 caracteres.</div>
+                    </div>
+
+                    <!-- Textarea para Description -->
+                    <div class="mb-3">
+                        <label for="descriptionTextarea" class="form-label">Description</label>
+                        <textarea class="form-control" id="descriptionTextarea" name="Description" rows="3" required minlength="3" maxlength="50"></textarea>
+                        <div class="invalid-feedback">La descripcion debe tener entre 3 y 500 caracteres.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="submitFormButton" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="dataContainer">
+    @Html.Partial("_Table")
+</div>
+<script>
+    document.getElementById('submitFormButton').addEventListener('click', function () {
+        const form = document.getElementById('createForm');
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+        }
+
+        const name = document.getElementById('nameInput').value;
+        const description = document.getElementById('descriptionTextarea').value;
+        const formData = {
+            Name: name,
+            Description: description
+        };
+        fetch('/Home/Create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
+                    modal.hide();
+                    //location.reload();
+                    fetch('/Home/GetData')
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('dataContainer').innerHTML = data;
+                        })
+                        .catch(error => {
+                            console.error('Error al cargar los datos:', error);
+                        });
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+
+    document.getElementById('dataContainer').addEventListener('click', function (event) {
+        if (event.target.classList.contains('edit-button')) {
+            const button = event.target;
+            const id = button.getAttribute('data-id');
+            const name = button.getAttribute('data-name');
+            const description = button.getAttribute('data-description');
+
+            document.getElementById('editId').value = id;
+            document.getElementById('editName').value = name;
+            document.getElementById('editDescription').value = description;
+
+            const modal2 = new bootstrap.Modal(document.getElementById('editModal'));
+            modal2.show();
+        } else if (event.target.classList.contains('delete-button')) {
+            const id = event.target.getAttribute('data-id');
+
+            if (confirm('¿Estás seguro de que deseas eliminar este registro?')) {
+                fetch(`/Home/Delete/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                            location.reload();
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        }
+    });
+
+    const closeModalButtons = document.querySelectorAll('#closeModal');
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const modal2 = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+            if (modal) {
+                modal2.hide();
+            }
+        });
+    });
+
+    document.getElementById('saveChanges').addEventListener('click', function () {
+        const id = document.getElementById('editId').value;
+        const name = document.getElementById('editName').value;
+        const description = document.getElementById('editDescription').value;
+
+        fetch('/Home/Edit', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id,
+                name: name,
+                description: description
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    const modal2 = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+                    modal2.hide();
+                    location.reload();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+

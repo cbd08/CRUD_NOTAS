@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "zqq4e2+puyMeMngXDKf/1V1YLAWnhcIGDOcvF3IJwhvfZ4pY1ibAy84x0pgmPGSXFu697eqVSacjrtDjJTwAsQ==",
+  "success": true,
+  "projectFilePath": "D:\\Tawa\\CRUD_NOTAS\\Data Access\\Data Access.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\W I N D O W S\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\W I N D O W S\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\W I N D O W S\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\W I N D O W S\\.nuget\\packages\\mysqlconnector\\2.3.7\\mysqlconnector.2.3.7.nupkg.sha512",
+    "C:\\Users\\W I N D O W S\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\W I N D O W S\\.nuget\\packages\\ssh.net\\2024.1.0\\ssh.net.2024.1.0.nupkg.sha512",
+    "C:\\Users\\W I N D O W S\\.nuget\\packages\\system.diagnostics.diagnosticsource\\7.0.2\\system.diagnostics.diagnosticsource.7.0.2.nupkg.sha512",
+    "C:\\Users\\W I N D O W S\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

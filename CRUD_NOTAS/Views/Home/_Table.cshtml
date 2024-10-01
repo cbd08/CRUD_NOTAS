@@ -1,0 +1,66 @@
+﻿@{
+    var data = ViewBag.Data as List<Business_Entity.BENotas>;
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (data != null && data.Any())
+        {
+            foreach (var item in data)
+            {
+                <tr>
+                    <th scope="row">@item.id</th>
+                    <td>@item.name</td>
+                    <td>@item.description</td>
+                    <td>
+                        <button class="btn btn-danger delete-button" data-id="@item.id">Eliminar</button>
+                        <button class="btn btn-warning edit-button" data-id="@item.id" data-name="@item.name" data-description="@item.description">
+                            Editar
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">No hay datos disponibles.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Nota</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <input type="hidden" id="editId" name="id" />
+                    <div class="form-group">
+                        <label for="editName">Name</label>
+                        <input type="text" class="form-control" id="editName" name="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editDescription">Description</label>
+                        <textarea class="form-control" id="editDescription" name="description" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closeModal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="saveChanges">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
